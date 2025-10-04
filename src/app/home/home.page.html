@@ -1,20 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>motion-orientation</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  X: {{myAccel?.x}}
+  <br />
+  Y: {{myAccel?.y}}
+  <br />
+  Z: {{myAccel?.z}}
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div
+    style="
+      width: 100%;
+      height: 50vh;
+      background: rgb(233, 233, 233);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <div
+      style="
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: orange;
+        transition: transform 0.1s linear;
+      "
+      [style.transform]="'translate('+(myAccel?.x || 0)*-50+'px, '+(myAccel?.y||0)*50 +'px)'"
+    ></div>
   </div>
+
+  <div
+    [style.backgroundColor]="color()"
+    style="width: 100%; height: 10vh"
+  ></div>
+
+  Alpha: {{alpha}} <br />
+  Beta: {{beta}} <br />
+  Gamma: {{gamma}}
+  <br />
+  Pose: {{pose}}
 </ion-content>
